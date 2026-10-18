@@ -1,0 +1,508 @@
+@import url('https://googleapis.com');
+
+/* Базовые сбросы и плавная прокрутка */
+html {
+    scroll-behavior: smooth;
+    /* Учитываем безопасные зоны iPhone 16 Pro Max (Dynamic Island и нижнюю полосу) */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: black;
+    color: #FFF;
+    overflow-x: hidden;
+}
+
+body.off-scroll {
+    overflow: hidden;
+}
+
+/* Общие стили секций */
+section {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Навигация */
+nav {
+   position: fixed;
+   top: 0;
+   width: 100%;
+   z-index: 100;
+   background: rgba(0, 0, 0, 0.85);
+   backdrop-filter: blur(10px);
+}
+
+.fixed-menu {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px 50px;
+   width: 100%;
+}
+
+.logo {
+   color: #BBFF2C;
+   font-size: 60px;
+   font-weight: 700;
+}
+
+.nav-links {
+   display: flex;
+   justify-content: center;
+   flex-grow: 1;
+   padding-right: 60px;
+}
+
+.nav-link {
+   width: 120px;
+   height: 45px;
+   border-radius: 12px;
+   border: 2px solid #000;
+   background-color: #FFF;
+   text-decoration: none;
+   color: #000;
+   font-size: 16px;
+   font-family: 'Comfortaa', sans-serif;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0 10px;
+   box-shadow: 3px 3px 0 #000;
+   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: #BBFF2C;
+    transform: scale(1.1);
+    box-shadow: 4px 4px 0 #000;
+}
+
+/* Мобильное меню */
+.mobile-button {
+    display: none;
+    cursor: pointer;
+    z-index: 110;
+}
+
+.mobile-menu {
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 90;
+   width: 100%;
+   height: 100vh;
+   background-color: #200153;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transition: opacity 0.3s ease;
+}
+
+.mobile-menu.hide {
+   display: none;
+}
+
+.mobile-nav {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.mobile-nav-links .nav-link {
+   width: 210px;
+   height: 50px;
+   margin: 0;
+}
+
+/* Фоновые изображения */
+#main { background-image: url('img/bgMAIN.png'); }
+#about { background-image: url('img/bgABOUT.png'); }
+#skills { background-image: url('img/bgSKILLS.png'); }
+#works { background-image: url('img/bgWORKS.png'); }
+#comments { background-image: url('img/bgCOMMENTS.png'); }
+
+/* Блоки контента */
+.main-block, .about-block, .skills-block,
+.works-block, .comments-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 100px;
+}
+
+/* Главная секция */
+.main-block {
+    flex-direction: column;
+}
+
+.maskot-img {
+    margin-bottom: 20px;
+}
+
+.main-content {
+    background-image: url('img/form1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    max-width: 849px;
+    height: 223px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-title {
+    color: #2B2D35;
+    font-size: 80px;
+}
+
+.main-subtitle {
+    color: #2B2D35;
+    font-size: 20px;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+/* Стили стандартных кнопок на страницах */
+.button {
+    width: 150px;
+    height: 40px;
+    border-radius: 100px;
+    border: 2px solid #000;
+    background: #BBFF2C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 0 #000000;
+    margin-top: 20px;
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.button:hover {
+    background: #a0d826;
+    transform: translateY(-2px);
+}
+
+.button a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+/* Заголовки страниц */
+.title {
+    padding-top: 80px;
+    text-align: center;
+    color: #FFF;
+    font-size: 80px;
+    text-shadow: 5px 5px 0 #000000;
+}
+
+/* Секция «Обо мне» */
+.about-card {
+    background-image: url('img/form2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 376px;
+    height: 346px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.about-card p {
+    color: #000;
+    font-size: 16px;
+    text-align: center;
+    padding: 0 20px;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.about-card img {
+    margin-bottom: 15px;
+    border-radius: 50%;
+}
+
+/* Анимации декораций */
+@keyframes planet-move {
+    from { transform: translateY(0px); }
+    to { transform: translateY(20px); }
+}
+
+.moving-cloud {
+    background: url('img/cloud.png') no-repeat;
+    width: 180px;
+    height: 162px;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    animation: planet-move 2s infinite alternate;
+}
+
+.moving-planet2 {
+    background: url('img/moving-planet2.png') no-repeat;
+    width: 208px;
+    height: 200px;
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    animation: planet-move 2s infinite alternate;
+}
+
+/* Секция навыков */
+.skills-card {
+    background-image: url('img/form3.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 600px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.skills-card p {
+    color: #000;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 450px;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.languages {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+/* СЕКЦИЯ РАБОТ + АНИМАЦИЯ ФОТОГРАФИЙ */
+.works-block {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+.work-item {
+    width: 27%;
+    max-width: 350px;
+    perspective: 1000px; /* Эффект трехмерного пространства */
+}
+
+.works-block img {
+    width: 100%;
+    height: auto;
+    box-shadow: 7px 7px 0 #000000;
+    border-radius: 15px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+}
+
+/* Эффект при наведении на десктопе и тапе на iPhone */
+.works-block img:hover {
+    transform: translateY(-15px) scale(1.08) rotate(1deg);
+    box-shadow: 0 20px 30px rgba(187, 255, 44, 0.4), 10px 10px 0 #000;
+}
+
+/* Секция отзывов */
+.comments-block {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 1150px;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.comment-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.comment-card {
+    background-image: url('img/card.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    padding: 20px;
+    color: #000;
+}
+
+.comment-card h3 {
+    font-size: 18px;
+    font-family: 'Comfortaa', sans-serif;
+    padding: 5px;
+}
+
+.comment-card p {
+    font-size: 13px;
+    font-family: 'Comfortaa', sans-serif;
+    text-align: center;
+}
+
+.comment {
+    max-width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.comment p {
+    color: #fff;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+/* Подвал */
+footer {
+    background-color: #200153;
+    height: 110px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #FFF;
+    margin-top: 5px;
+}
+
+.footer-info p, .footer-year p {
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.footer-info p { padding-bottom: 5px; }
+.footer-year p { letter-spacing: 1.5px; }
+.footer-links { display: flex; gap: 15px; }
+.footer-links a img { width: 24px; height: 24px; }
+
+
+/* ==========================================================================
+   АДАПТИВНОСТЬ: МЕДИА-ЗАПРОСЫ ДЛЯ СМАРТФОНОВ (ВКЛЮЧАЯ IPHONE 16 PRO MAX)
+   ========================================================================== */
+
+@media (max-width: 1000px) {
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-button {
+        display: block;
+    }
+
+    .fixed-menu {
+        padding: 10px 25px;
+    }
+
+    .logo {
+        font-size: 45px;
+    }
+
+    .title {
+        font-size: 45px;
+        padding-top: 40px;
+    }
+
+    .main-block {
+        padding: 20px;
+        justify-content: center;
+    }
+
+    .main-content {
+        max-width: 90%;
+        height: auto;
+        padding: 40px 20px;
+        background-size: 100% 100%;
+    }
+
+    .main-title {
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .main-subtitle {
+        font-size: 16px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .moving-cloud, .moving-planet2 {
+        display: none !important;
+    }
+
+    .about-block, .works-block, .comments-block {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 40px 20px;
+    }
+
+    .about-card {
+        width: 326px;
+        height: 296px;
+        background-size: 100% 100%;
+    }
+
+    .skills-card {
+        width: 90%;
+        max-width: 500px;
+        height: auto;
+        padding: 50px 20px;
+        background-size: 100% 100%;
+    }
+
+    .work-item {
+        width: 85%;
+        max-width: 320px;
+    }
+
+    .comment {
+        max-width: 90%;
+    }
+}
+
+/* Динамические фоны в зависимости от ширины экрана */
+@media (max-width: 520px) {
+    body { background-color: #792AFF; }
+}
+
+@media (min-width: 521px) and (max-width: 960px) {
+body { background-color: #BBFF2C; }
+}

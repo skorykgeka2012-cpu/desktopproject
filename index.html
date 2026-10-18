@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диана Корнигор — Личная страница разработчика</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Шапка и навигация -->
+    <nav>
+        <div class="fixed-menu">
+            <h1 class="logo">DK</h1>
+            
+            <!-- Десктопное меню -->
+            <div class="nav-links">
+                <a class="nav-link main-link active" href="#main">Главная</a>
+                <a class="nav-link about-link" href="#about">Обо мне</a>
+                <a class="nav-link skills-link" href="#skills">Навыки</a>
+                <a class="nav-link works-link" href="#works">Работы</a>
+                <a class="nav-link comments-link" href="#comments">Отзывы</a>
+            </div>
+
+            <!-- Кнопка мобильного меню -->
+            <div class="mobile-button">
+                <img src="img/mobile_menu.png" width="40" alt="Открыть меню">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Мобильное меню (вынесено отдельно для правильного позиционирования) -->
+    <div class="mobile-menu hide">
+        <div class="mobile-nav">
+            <div class="mobile-nav-links">
+                <a class="nav-link main-link" href="#main">Главная</a>
+                <a class="nav-link about-link" href="#about">Обо мне</a>
+                <a class="nav-link skills-link" href="#skills">Навыки</a>
+                <a class="nav-link works-link" href="#works">Работы</a>
+                <a class="nav-link comments-link" href="#comments">Отзывы</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Главная секция -->
+    <section id="main">
+        <div class="main-block">
+            <img src="img/_maskot.png" class="maskot-img" width="125" alt="Маскот">
+            <div class="main-content">
+                <h1 class="main-title">ДИАНА КОРНИГОР</h1>
+                <p class="main-subtitle">личная страница разработчика</p>
+            </div>
+            <div class="button">
+                <a href="#about">Подробнее</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция «Обо мне» -->
+    <section id="about">
+        <h1 class="title">ОБО МНЕ</h1>
+        <div class="about-block">
+            <div class="about-card">
+                <img src="img/photo.png" width="90" alt="Фото Дианы">
+                <p>Привет! Я начинающий веб-разработчик. Создаю современные, стильные и интерактивные веб-сайты.</p>
+            </div>
+        </div>
+        <div class="moving-cloud"></div>
+    </section>
+
+    <!-- Секция «Навыки» -->
+    <section id="skills">
+        <h1 class="title">НАВЫКИ</h1>
+        <div class="skills-block">
+            <div class="skills-card">
+                <p>ЭТОТ САЙТ Я СДЕЛАЛА В РАМКАХ ОБУЧЕНИЯ ШКОЛЫ ROCKET TECH SCHOOL</p>
+                <div class="languages">
+                    <img src="img/html.png" width="70" alt="HTML">
+                    <img src="img/css.png" width="70" alt="CSS">
+                    <img src="img/js.png" width="70" alt="JS">
+                </div>
+                <div class="button">
+                    <a href="#works">Смотреть работы</a>
+                </div>
+            </div>
+        </div>
+        <div class="moving-planet2"></div>
+    </section>
+
+    <!-- Секция «Работы» -->
+    <section id="works">
+        <h1 class="title">РАБОТЫ</h1>
+        <div class="works-block">
+            <div class="work-item"><img src="img/work1.png" alt="Работа 1"></div>
+            <div class="work-item"><img src="img/work2.png" alt="Работа 2"></div>
+            <div class="work-item"><img src="img/work3.png" alt="Работа 3"></div>
+        </div>
+    </section>
+
+    <!-- Секция «Отзывы» -->
+    <section id="comments">
+        <h1 class="title">ОТЗЫВЫ</h1>
+        <div class="comments-block">
+            <div class="comment-wrapper">
+                <div class="comment-card">
+                    <img src="img/photo1.png" width="80" alt="Владимир">
+                    <h3>Владимир</h3>
+                    <p>Основатель Rocket Tech School</p>
+                </div>
+                <div class="comment">
+                    <p>Эта девочка проходила обучение веб-разработке 4 месяца, и уже создает сложные сайты!</p>
+                </div>
+            </div>
+            
+            <div class="comment-wrapper">
+                <div class="comment-card">
+                    <img src="img/photo2.png" width="80" alt="Диана">
+                    <h3>Диана</h3>
+                    <p>Product Lead Rocket Tech School</p>
+                </div>
+                <div class="comment">
+                    <p>Очень хорошо пишет код. Отличная оптимизация сайта. Современно, стильно, молодежно!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-info">
+            <p>ДИАНА КОРНИГОР</p>
+            <p>Личный сайт веб-разработчика</p>
+        </div>
+        <div class="footer-year">   
+            <p>© 2023</p>
+        </div>
+        <div class="footer-links">
+            <a href="#"><img src="img/facebook.svg" alt="Facebook"></a>
+            <a href="#"><img src="img/instagram.svg" alt="Instagram"></a>
+            <a href="#"><img src="img/telegram.svg" alt="Telegram"></a>
+            <a href="#"><img src="img/discord.svg" alt="Discord"></a>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
